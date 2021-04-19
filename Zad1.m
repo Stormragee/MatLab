@@ -1,5 +1,9 @@
-N = 7;
+%N = 7;
 %Macierz trójdiagonalna
+
+function A = Zad1(N)
+
+
 D1 = 4 * eye(N);
 D2 =  diag(- 2 *ones(N-1,1),1);
 D3 =  diag(- 2 *ones(N-1,1),-1);
