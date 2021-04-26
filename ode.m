@@ -7,10 +7,9 @@ initial_v = 10;
 
 function dqdt = odefun(t,q)
 % Ta funkcja musi wejść do ODE45 lub podobnej
-% https://www.eng.auburn.edu/~tplacek/courses/3600/ode45berkley.pdf
     x = q(1);
     v = q(2);
-    
+    global m0 s k;
     m0 = 10.0; % kg
     s = 10; % parametr s w sekundach.
     k = 100; % parametr 
