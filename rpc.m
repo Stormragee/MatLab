@@ -8,6 +8,8 @@ A = speye(N*M);
 
 for i = 2 : (N-1)
     for j = 2 : (M-1)
+        if i < round(N/4) || i > round(3*N/4) ...
+               || j < round(N/4) || j > round(3*N/4) 
         k = i + (j -1) * N;
         k1 = (i -1) + (j -1) * N;
         k2 = (i + 1)+ (j -1) * N;
@@ -18,24 +20,45 @@ for i = 2 : (N-1)
         A(k,k2) = -1;
         A(k,k3) = -1;
         A(k,k4) = -1;
+        end
     end
 end
 b = zeros(N*M,1);
+for i = round(N/4): round(3*N/4)
 for i = 1:N 
     j = 1;
-    k = i + (j - 1) * N;
-    b(k) = 80; % temperatura z lewej
+     if i < round(N/4) || i > round(3*N/4) ...
+               || j < round(N/4) || j > round(3*N/4) 
+        k = i + (j - 1) * N;
+        b(k) = 20; % temperatura z lewej
+            else
+            b(k) = 100;
+     end
     j = M;
+    if i < round(N/4) || i > round(3*N/4) ...
+       || j < round(N/4) || j > round(3*N/4) 
     k = i + (j - 1) * N;
     b(k) = 20; % temperatura z prawej
+        else
+            b(k) = 100;
+    end
 end
 for j = 1:M 
     i = 1;
     k = i + (j - 1) * N;
-    b(k) = 80; % temperatura z lewej
+    if i < round(N/4) || i > round(3*N/4) ...
+       || j < round(N/4) || j > round(3*N/4) 
+            b(k) = 80; % temperatura z góry
+    else
+            b(k) = 100;
+    end
+        
     i = M;
     k = i + (j - 1) * N;
-    b(k) = 20; % temperatura z prawej
+    if i < round(N/4) || i > round(3*N/4) ...
+               || j < round(N/4) || j > round(3*N/4) 
+    b(k) = 20; % temperatura z dołu
+    end
 end
 T = A\b;
 %T = lsqr(A,b);
