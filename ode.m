@@ -1,8 +1,8 @@
 function ode
 t=0:0.001:5;   % time scalex
-initial_t = 0;
-initial_q = 10;
-[g,x]=ode45( @(g,x) odefun(g,x), t, [initial_t, initial_q]);
+initial_t = 10;
+initial_q = 0;
+[g,x] =ode23( @(g,x) odefun(g,x), t, [initial_t, initial_q]);
 
 
 function dqdt = odefun(t,q)
@@ -12,7 +12,7 @@ function dqdt = odefun(t,q)
     global m0 s k;
     m0 = 10.0; % kg
     s = 10; % parametr s w sekundach.
-    k = 100; % parametr 
+    k = 1000; % parametr 
     m = m0 * exp(-t/s);
     F = -k * x;
     
@@ -25,7 +25,8 @@ function dqdt = odefun(t,q)
 end
 
 
-plot(g,x,'-o');
-xlabel('v'); ylabel('a');
+plot(g,x);
+xlabel('t'); ylabel('v');
 drawnow;
+%plot(x(:,1),x(:,2));
 end
