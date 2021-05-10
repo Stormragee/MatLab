@@ -1,8 +1,8 @@
 function ode
 t=0:0.001:5;   % time scalex
-initial_x = 10;
-initial_v = 10;
-[t,x]=ode45( @odefun, t, [initial_x, initial_v]);
+initial_t = 0;
+initial_q = 10;
+[g,x]=ode45( @(g,x) odefun(g,x), t, [initial_t, initial_q]);
 
 
 function dqdt = odefun(t,q)
@@ -25,7 +25,7 @@ function dqdt = odefun(t,q)
 end
 
 
-plot(t,x(:,1));
-xlabel('t'); ylabel('x');
+plot(g,x,'-o');
+xlabel('v'); ylabel('a');
 drawnow;
 end
