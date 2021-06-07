@@ -8,7 +8,7 @@ S = A;
 for i = 1:N-1
     S = circshift(S,[0,1]);
     %if det(A)) ~= det(S) Przez procesy obliczeniowe wynik ten jest
-    %fałszem! ans = 5.551115123125783e-17
+    %fałszem! det(A) - det(S) = 5.551115123125783e-17
     if floor(det(A)) ~= floor(det(S))
         disp("Sa rozne!")
         det(A)
