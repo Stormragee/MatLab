@@ -7,8 +7,14 @@ figure(1);
 clf;
 plot(x,f(x))
 hold on;
-plot(y,f(y), 'or')
-text(z,f(z),string(z))
+
+
+plot(y,f(y), 'o','markersize',22,'markerfacecolor','y','markeredgecolor','r')
+text(z-5,f(z),string(z),'fontsize',7)
+hold on;
+
+
+
 xlim([0,360]);
 grid minor;
 grid on;

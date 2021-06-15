@@ -10,10 +10,10 @@ for i = 1:N-1
     %if det(A)) ~= det(S) Przez procesy obliczeniowe wynik ten jest
     %fałszem! różnica między wyznacznikami = 5.551115123125783e-17
     if floor(det(A)) ~= floor(det(S))
-        disp("Sa rozne!")
-        det(A)
-        det(S)
-        det(A) - det(S)
+        disp("Sa rozne!");
+        det(A);
+        det(S);
+        det(A) - det(S);
         break
     end
 end
